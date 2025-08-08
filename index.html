@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZITER Perú - Orden Informático</title>
+  <link rel="icon" href="file:///C:/Users/GDRR/OneDrive/ZITER/ZR.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #ffffff;
+      color: #0b0c10;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* -------- HEADER PRINCIPAL -------- */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('file:///C:/Users/GDRR/OneDrive/ZITER/fondo.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .logo {
+      width: 50%;
+      height: auto;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    header p {
+  font-size: clamp(1.5rem, 3vw, 3rem); /* escala automática según el ancho de la pantalla */
+  margin-bottom: 1rem;
+}
+
+    /* -------- NAV PRINCIPAL -------- */
+    nav {
+      background-color: #ffffff;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: fixed;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: top 0.4s ease;
+      z-index: 999;
+    }
+
+    nav.show {
+      top: 0;
+    }
+
+    nav img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #a80000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #ff4d4d;
+    }
+
+    /* Botón hamburguesa */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #a80000;
+      transition: 0.3s;
+    }
+
+    /* Versión responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    section {
+      height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+
+    #servicios {
+      background-image: url('file:///C:/Users/GDRR/OneDrive/ZITER/servicios.webp');
+    }
+
+    #beneficios {
+      background-image: url('file:///C:/Users/GDRR/OneDrive/ZITER/beneficios.png');
+    }
+
+    #test-internet {
+      background-image: url('file:///C:/Users/GDRR/OneDrive/ZITER/test.webp');
+    }
+
+    #contacto {
+      background-image: url('file:///C:/Users/GDRR/OneDrive/ZITER/contacto.webp');
+    }
+
+    .services, .benefits {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .box {
+      padding: 1rem;
+      background: rgba(0,0,0,0.6);
+      border-left: 4px solid #ff4d4d;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border: none;
+      background: #ffffff;
+      color: #0b0c10;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    button {
+      padding: 0.8rem;
+      background: #a80000;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1f2833;
+      color: #c5c6c7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV FIJO QUE APARECE DESPUÉS DEL HEADER -->
+  <nav id="mainNav">
+    <img src="file:///C:/Users/GDRR/OneDrive/ZITER/ZR.png" alt="ZITER Logo">
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#top">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#test-internet">Test</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- PRIMERA PANTALLA -->
+  <header id="top">
+    <img src="file:///C:/Users/GDRR/OneDrive/ZITER/ziter_peru.png" alt="ZITER Perú Logo" class="logo">
+    <p>El Orden Informático en tu Empresa</p>
+  </header>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="box">Servidores cloud</div>
+      <div class="box">Correo corporativo</div>
+      <div class="box">Administración de usuarios</div>
+      <div class="box">Soporte técnico TI</div>
+      <div class="box">Seguridad y backups</div>
+    </div>
+  </section>
+
+<!-- QUITANDO LOS BENEFICIOS -->
+ section id="beneficios">
+    <h2>Beneficios</h2>
+    <div class="benefits">
+      <div class="box">Experiencia remota y presencial</div>
+      <div class="box">Integración con Microsoft 365</div>
+      <div class="box">Infraestructura escalable</div>
+    </div>
+  </section>
+
+  <section id="test-internet">
+    <h2>Medidor de velocidad</h2>
+    <p>¿Tu conexión está rindiendo como debería? Haz la prueba aquí:</p>
+    <div style="width: 50vw; height: 50vh; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px;">
+      <iframe src="https://fast.com" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <form action="mailto:contacto@ziterperu.com" method="POST" enctype="text/plain">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="correo" placeholder="Tu correo" required />
+      <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ZITER Perú. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Mostrar nav fijo cuando pasamos del header
+    const nav = document.getElementById("mainNav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > window.innerHeight - 50) {
+        nav.classList.add("show");
+      } else {
+        nav.classList.remove("show");
+      }
+    });
+
+    // Menú hamburguesa
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Scroll a pantalla completa
+    let currentSection = 0;
+    const sections = document.querySelectorAll("section, header");
+
+    window.addEventListener("wheel", (e) => {
+      if (e.deltaY > 0) {
+        currentSection = Math.min(currentSection + 1, sections.length - 1);
+      } else {
+        currentSection = Math.max(currentSection - 1, 0);
+      }
+      sections[currentSection].scrollIntoView({ behavior: "auto" });
+    });
+  </script>
+</body>
+</html>
+
